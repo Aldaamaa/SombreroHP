@@ -14,3 +14,8 @@ for(i in 1:p){
   pregunta = levels(drop.levels(datos_pre[preguntas[i],2])) #Accedemos a la descripción de la pregunta
   respuestas[i] = readline(pregunta) #Almacenamos las respuestas del usuario
 }
+
+# Tabla con los datos de los personajes en base a las respuestas del usuario
+datos_tratar = datos_res[,1:2]
+datos_tratar = cbind(datos_tratar, datos_res[, (preguntas+2)])
+
