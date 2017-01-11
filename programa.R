@@ -20,5 +20,6 @@ for(i in 1:p){
 datos_tratar = datos_res[,1:2]
 datos_tratar = cbind(datos_tratar, datos_res[, (preguntas+2)])
 
-#model=naiveBayes(datos_tratar, labels_tra, laplace = 0);
-#out = predict(model, data_tst, type="class")
+model=naiveBayes(datos_tratar[,3:10], datos_tratar[,2], laplace = 1);
+out = predict(model, respuestas, type="class");
+tab = table(out, labels_tst)
