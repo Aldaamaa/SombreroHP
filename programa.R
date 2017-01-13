@@ -12,7 +12,7 @@ p = 10 #preguntas a realizar
 preguntas = sort(sample(1:nrow(datos_pre),p)) #Almacenar numeros de preguntas
 respuestas = vector("character",p) #Creamos vector para despues almacenar respuestas
 i = 1;
-while(i<p){
+while(i<=p){
   pregunta = levels(droplevels(datos_pre[preguntas[i],2])) #Accedemos a la descripción de la pregunta
   respuesta = readline(pregunta); #Almacenamos las respuestas del usuario
   if(respuesta == "SI" || respuesta == "NO"){
@@ -30,5 +30,6 @@ datos_tratar = cbind(datos_tratar, datos_res[, (preguntas+2)])
 model=naiveBayes(datos_tratar[,3:12], datos_tratar[,2], laplace = 1);
 summary(model)
 respuestas =as.data.frame(t(respuestas))
+colnames(respuestas)=colnames(datos_tratar)[3:12]
 out = predict(model, respuestas, type="raw");
 out
